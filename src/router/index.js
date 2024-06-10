@@ -5,6 +5,9 @@ import Ambulans from "../views/Ambulans.vue";
 import PertolonganPertama from "../views/PertolonganPertama.vue";
 import Riwayat from "../views/Riwayat.vue";
 import Settings from "../views/Settings.vue";
+import login from "../views/Login.vue";
+import register from "../views/Register.vue";
+
 
 
 const routes = [
@@ -33,6 +36,14 @@ const routes = [
         component: Settings,
       },
     ],
+  },
+  {
+    path: "/login",
+    component: login,
+  },
+  {
+    path: "/register",
+    component: register,
   },
 
 ];
