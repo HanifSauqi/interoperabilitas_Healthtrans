@@ -1,19 +1,17 @@
 import { createRouter, createWebHistory } from "vue-router";
 
 import Wrapper from "../views/Wrapper.vue";
-import Ambulans from "../views/Ambulans.vue";
-import PertolonganPertama from "../views/PertolonganPertama.vue";
-import Riwayat from "../views/Riwayat.vue";
-import Settings from "../views/Settings.vue";
+import Ambulans from "../views/User/Ambulans.vue";
+import PertolonganPertama from "../views/User/PertolonganPertama.vue";
+import Riwayat from "../views/User/Riwayat.vue";
+import Settings from "../views/User/Settings.vue";
 import login from "../views/Login.vue";
 import register from "../views/Register.vue";
-
-
 
 const routes = [
   {
     path: "/",
-    redirect: "/ambulans"
+    redirect: "/ambulans",
   },
   {
     path: "/",
@@ -45,7 +43,6 @@ const routes = [
     path: "/register",
     component: register,
   },
-
 ];
 
 const router = Router();
