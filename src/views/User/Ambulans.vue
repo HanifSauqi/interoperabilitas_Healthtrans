@@ -92,12 +92,12 @@
         </tr>
       </thead>
       <tbody class="bg-white divide-y divide-gray-200">
-        <tr v-for="ambulance in filteredAmbulances" :key="ambulance.id">
+        <tr v-for="ambulance in ambulances" :key="ambulance.id">
           <td class="pl-8 px-6 py-4 whitespace-nowrap">{{ ambulance.id }}</td>
-          <td class="px-6 py-4 whitespace-nowrap">{{ ambulance.wilayah }}</td>
-          <td class="px-6 py-4 whitespace-nowrap">{{ ambulance.platNomor }}</td>
+          <td class="px-6 py-4 whitespace-nowrap">{{ ambulance.lokasi }}</td>
+          <td class="px-6 py-4 whitespace-nowrap">{{ ambulance.plat_nomor }}</td>
           <td class="px-6 py-4 whitespace-nowrap">
-            {{ ambulance.nomorTelepon }}
+            {{ ambulance.petugas.no_telp }}
           </td>
           <td class="px-6 py-4 whitespace-nowrap">
             <span
@@ -115,41 +115,31 @@
 </template>
 
 <script>
+import axios from 'axios';
+
 export default {
   name: "Ambulans",
   data() {
     return {
       filter: "",
-      ambulances: [
-        {
-          id: 1,
-          wilayah: "Jakarta",
-          platNomor: "B 1234 AB",
-          nomorTelepon: "081234567890",
-          status: "SIAP",
-        },
-        {
-          id: 2,
-          wilayah: "Bandung",
-          platNomor: "D 5678 EF",
-          nomorTelepon: "089876543210",
-          status: "BEROPRASI",
-        },
-        {
-          id: 3,
-          wilayah: "Surabaya",
-          platNomor: "L 9012 GH",
-          nomorTelepon: "085678912345",
-          status: "STOP",
-        },
-      ],
+      ambulances: [],
     };
+  },
+  mounted() {
+    axios.get('http://127.0.0.1:8000/api/ambulans')
+      .then(response => {
+        this.ambulances = response.data.data;
+        console.log(this.ambulances);
+      })
+      .catch(error => {
+        console.error(error);
+      });
   },
   computed: {
     filteredAmbulances() {
-      return this.ambulances.filter((ambulance) =>
-        ambulance.wilayah.includes(this.filter)
-      );
+      // return this.ambulances.filter((ambulance) =>
+        // ambulance.wilayah.includes(this.filter)
+      // );
     },
   },
   methods: {
