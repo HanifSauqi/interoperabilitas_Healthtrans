@@ -36,18 +36,28 @@
           />
         </div>
         <div class="flex items-center justify-between">
+          <router-link
+            class="inline-block align-baseline font-bold text-xl text-red-500 hover:text-red-800"
+            to="/ambulans"
+          >
           <button
             class="bg-blue-500 hover:bg-blue-700 text-xl text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
             type="submit"
           >
             Sign In
           </button>
+          </router-link>
+          <router-link
+            class="inline-block align-baseline font-bold text-xl text-red-500 hover:text-red-800"
+            to="/register"
+          >
           <a
             class="inline-block align-baseline font-bold text-xl text-red-500 hover:text-red-800"
             href="#"
           >
             Register
           </a>
+          </router-link>
         </div>
       </form>
     </div>

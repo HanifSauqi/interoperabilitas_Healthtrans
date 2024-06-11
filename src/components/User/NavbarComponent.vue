@@ -10,7 +10,7 @@
       />
       <div>
         <p class="font-bold">Hanif</p>
-        <p class="text-sm text-gray-500">Admin</p>
+        <p class="text-sm text-gray-500">User</p>
       </div>
       <div class="ml-2">
         <svg

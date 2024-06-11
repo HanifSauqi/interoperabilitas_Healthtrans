@@ -2,10 +2,12 @@
     <div class="relative mb-10">
       <!-- Title and "Tambah" button -->
       <h1 class="text-3xl font-bold mb-5">List Ambulans</h1>
-      <div class="absolute top-4 right-4">
+      <div class="absolute   top-4 right-4">
+        <router-link to="/admin/create-ambulans">
         <button @click="addAmbulance" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
           Tambah
         </button>
+        </router-link>
       </div>
   
       <!-- Filter Section -->

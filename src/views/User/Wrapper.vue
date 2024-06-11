@@ -1,6 +1,6 @@
 <script setup>
 import SidebarComponent from "/src/components/User/SidebarComponent.vue";
-import NavbarComponent from "/src/components/User/SidebarComponent.vue";
+import NavbarComponent from "/src/components/User/NavbarComponent.vue";
 </script>
 
 <template>

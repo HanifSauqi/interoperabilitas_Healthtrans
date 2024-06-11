@@ -3,12 +3,14 @@
     <!-- Container for positioning the button -->
     <div class="top-4 right-4 flex justify-between w-full">
       <h1 class="text-3xl font-bold">Pertolongan Pertama</h1>
-      <button
-        @click="addItem"
-        class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-      >
-        Tambah
-      </button>
+      <router-link to="/admin/create-pertolongan-pertama">
+        <button
+          @click="addItem"
+          class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+        >
+          Tambah
+        </button>
+      </router-link>
     </div>
     <div class="w-full flex flex-col items-start justify-start gap-10">
       <div
