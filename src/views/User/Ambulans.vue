@@ -103,7 +103,7 @@
             <span
               :class="[
                 'px-2 py-1 rounded text-center font-bold text-xs uppercase',
-                getStatusClass(ambulance.status),
+                getStatusClass(ambulance.status.toUpperCase()),
               ]"
               >{{ ambulance.status }}</span
             >
