@@ -11,7 +11,14 @@ import adminambulans from "../views/Admin/Adminambulans.vue";
 import WrapperAdmin from "../views/Admin/Wrapperadmin.vue";
 import AdminPertolonganPertama from "../views/Admin/AdminPertolonganPertama.vue";
 import CreateAmbulans from "../views/Admin/CreateAmbulans.vue";
+import EditAmbulans from "../views/Admin/EditAmbulans.vue";
 import CreatePertolonganPertama from "../views/Admin/CreatePertolonganPertama.vue";
+import AdminRumahSakit from "../views/Admin/AdminRumahSakit.vue";
+import CreateRumahSakit from "../views/Admin/CreateRumahSakit.vue";
+import EditRumahSakit from "../views/Admin/EditRumahSakit.vue";
+import AdminPetugas from "../views/Admin/AdminPetugas.vue";
+import CreatePetugas from "../views/Admin/CreatePetugas.vue";
+import EditPetugas from "../views/Admin/EditPetugas.vue";
 
 const userRoutes = [
   {
@@ -69,9 +76,37 @@ const adminRoutes = [
         component: CreateAmbulans,
       },
       {
+        path: "edit-ambulans/:id",
+        component: EditAmbulans,
+      },
+      {
         path: "create-pertolongan-pertama",
         component: CreatePertolonganPertama,
       },
+      {
+        path: "rumah-sakit",
+        component: AdminRumahSakit,
+      },
+      {
+        path: "create-rumah-sakit",
+        component: CreateRumahSakit,
+      },
+      {
+        path: "edit-rumah-sakit/:id",
+        component: EditRumahSakit,
+      },
+      {
+        path: "petugas",
+        component: AdminPetugas,
+      },
+      {
+        path: "create-petugas",
+        component: CreatePetugas,
+      },
+      {
+        path: "edit-petugas/:id",
+        component: EditPetugas,
+      }
       // tambahkan rute admin lainnya di sini
     ],
   },

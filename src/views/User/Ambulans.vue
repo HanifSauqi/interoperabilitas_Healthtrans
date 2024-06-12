@@ -17,27 +17,12 @@
       />
     </svg>
     <span class="">Filter by</span>
-    <select class="flex items-center bg-white rounded-xl border-0">
-      <span class="">Wilayah</span>
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width="1em"
-        height="1em"
-        viewBox="0 0 48 48"
-      >
-        <path
-          fill="none"
-          stroke="currentColor"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          stroke-width="4"
-          d="M36 18L24 30L12 18"
-        />
-      </svg>
-        <option>Wilayah</option>
-        <option>yogayakarta</option>
+    <select v-model="filter" class="flex items-center bg-white rounded-xl border-0">
+      <option value="">Wilayah</option>
+      <option value="yogayakarta">Yogayakarta</option>
+      <!-- Add more options here as needed -->
     </select>
-    <button class="flex items-center text-red-600">
+    <button @click="resetFilter" class="flex items-center text-red-600">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width="1em"
@@ -58,7 +43,7 @@
       </svg>
       Reset Filter
     </button>
-</div>
+  </div>
 
   <div class="bg-white">
     <table class="table-fixed w-full divide-y divide-gray-200 rounded-lg">
@@ -92,7 +77,7 @@
         </tr>
       </thead>
       <tbody class="bg-white divide-y divide-gray-200">
-        <tr v-for="ambulance in ambulances" :key="ambulance.id">
+        <tr v-for="ambulance in filteredAmbulances" :key="ambulance.id">
           <td class="pl-8 px-6 py-4 whitespace-nowrap">{{ ambulance.id }}</td>
           <td class="px-6 py-4 whitespace-nowrap">{{ ambulance.lokasi }}</td>
           <td class="px-6 py-4 whitespace-nowrap">{{ ambulance.plat_nomor }}</td>
@@ -113,6 +98,7 @@
     </table>
   </div>
 </template>
+
 
 <script>
 import axios from 'axios';
@@ -137,17 +123,23 @@ export default {
   },
   computed: {
     filteredAmbulances() {
-      // return this.ambulances.filter((ambulance) =>
-        // ambulance.wilayah.includes(this.filter)
-      // );
+      if (this.filter) {
+        return this.ambulances.filter((ambulance) =>
+          ambulance.lokasi.toLowerCase().includes(this.filter.toLowerCase())
+        );
+      }
+      return this.ambulances;
     },
   },
   methods: {
+    resetFilter() {
+      this.filter = "";
+    },
     getStatusClass(status) {
       switch (status) {
         case "SIAP":
           return "bg-green-200 text-green-800 ";
-        case "BEROPRASI":
+        case "BEROPERASI":
           return "bg-purple-200 text-purple-800";
         case "STOP":
           return "bg-red-200 text-red-800";
@@ -158,5 +150,6 @@ export default {
   },
 };
 </script>
+
 
 <style scoped></style>
