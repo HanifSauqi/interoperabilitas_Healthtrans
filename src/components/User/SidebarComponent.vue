@@ -103,6 +103,7 @@
 
       <router-link
         to="/login"
+        @click="logout"
         class="block mt-4 py-3 mx-6 rounded-lg text-black bg-white hover:bg-blue-500 hover:text-white hover:border-blue-500 flex items-center"
       >
         <svg
@@ -122,3 +123,16 @@
     </div>
   </aside>
 </template>
+
+<script>
+export default {
+  methods: {
+    logout() {
+      // Clear localStorage
+      localStorage.removeItem('userData');
+      // Redirect to login page
+      this.$router.push('/login'); // Replace with your login page route
+    }
+  }
+};
+</script>

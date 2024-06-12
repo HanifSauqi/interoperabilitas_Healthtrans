@@ -75,7 +75,13 @@ export default {
         // Handle successful login, e.g., store token in localStorage, redirect, etc.
         // Example:
         localStorage.setItem('userData', JSON.stringify(response.data.data));
-        this.$router.push('/admin'); // Redirect to dashboard after successful login
+        const role = JSON.parse(localStorage.getItem('userData')).role;
+        if (role === 'admin') {
+          this.$router.push('/admin'); // Redirect to dashboard after successful login
+        }
+        else {
+          this.$router.push('/ambulans')
+        }
       } catch (error) {
         console.error('Error logging in:', error);
         // Handle error, e.g., show error message to the user
@@ -84,10 +90,15 @@ export default {
   },
   created() {
     // Check if userData exists in localStorage
-    const userData = localStorage.getItem('userData');
+    const userData = JSON.parse(localStorage.getItem('userData'));
     if (userData) {
-      // Redirect to admin page
-      this.$router.push('/admin'); // Replace with your admin page route
+      if (userData.role === 'admin') {
+        // Redirect to admin page
+        this.$router.push('/admin'); // Replace with your admin page route
+      }
+      else {
+        this.$router.push('/ambulans')
+      }
     }
   }
 };
