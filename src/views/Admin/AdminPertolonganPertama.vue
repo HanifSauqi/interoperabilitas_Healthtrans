@@ -52,7 +52,7 @@
                 <td class="pl-8 px-6 py-4 whitespace-nowrap">{{ item.id }}</td>
                 <td class="px-6 py-4 whitespace-nowrap">
                   <img
-                    :src="item.foto"
+                    :src="`http://127.0.0.1:8000${item.gambar}`"
                     alt="Foto"
                     class="w-16 h-16 object-cover"
                   />
@@ -62,6 +62,7 @@
                   {{ item.deskripsi }}
                 </td>
                 <td class="px-6 py-4 whitespace-nowrap">
+                  <router-link :to="'/admin/edit-pertolongan-pertama/' + item.id" class="text-blue-600 hover:text-blue-900">
                   <button
                     @click="editItem(item)"
                     class="text-blue-600 hover:text-blue-900 mr-2"
@@ -82,8 +83,9 @@
                       />
                     </svg>
                   </button>
+                  </router-link>
                   <button
-                    @click="deleteItem(item.id)"
+                    @click="confirmDeleteItem(item.id)"
                     class="text-red-600 hover:text-red-900"
                   >
                     <svg
@@ -109,51 +111,47 @@
 </template>
 
 <script>
+import axios from 'axios';
+
 export default {
   data() {
     return {
-      items: [
-        {
-          id: 1,
-          foto: "https://via.placeholder.com/64",
-          judul: "Korban Tenggelam",
-          deskripsi:
-            "Langkah-langkah pertolongan pertama yang perlu dilakukan saat terjadi kecelakaan.",
-        },
-        {
-          id: 2,
-          foto: "https://via.placeholder.com/64",
-          judul: "Korban Tenggelam",
-          deskripsi:
-            "Cara menangani luka bakar sebelum mendapatkan bantuan medis.",
-        },
-        {
-          id: 3,
-          foto: "https://via.placeholder.com/64",
-          judul: "Korban Tenggelam",
-          deskripsi: "Teknik menghentikan pendarahan yang efektif dan cepat.",
-        },
-        {
-          id: 4,
-          foto: "https://via.placeholder.com/64",
-          judul: "Korban Tenggelam",
-          deskripsi: "Langkah-langkah penting dalam menangani patah tulang.",
-        },
-      ],
+      items: [],
     };
   },
   methods: {
+    async fetchItems() {
+      try {
+        const response = await axios.get('http://127.0.0.1:8000/api/pertolongan-pertama');
+        this.items = response.data.data
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    },
     addItem() {
       console.log("Add new item");
     },
     editItem(item) {
       console.log("Edit item:", item);
     },
-    deleteItem(id) {
+    async deleteItem(id) {
       console.log("Delete item with ID:", id);
-      this.items = this.items.filter((item) => item.id !== id);
+      try {
+        await axios.delete(`http://127.0.0.1:8000/api/pertolongan-pertama/${id}`)
+        this.items = this.items.filter((item) => item.id !== id);
+      } catch (error) {
+        console.error('Error deleting item:', error);
+      }
     },
+    confirmDeleteItem(id) {
+      if (confirm('Are you sure you want to delete this item?')) {
+        this.deleteItem(id);
+      }
+    }
   },
+  mounted() {
+    this.fetchItems();
+  }
 };
 </script>
 

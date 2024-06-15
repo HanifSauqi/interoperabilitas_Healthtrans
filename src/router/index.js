@@ -13,6 +13,7 @@ import AdminPertolonganPertama from "../views/Admin/AdminPertolonganPertama.vue"
 import CreateAmbulans from "../views/Admin/CreateAmbulans.vue";
 import EditAmbulans from "../views/Admin/EditAmbulans.vue";
 import CreatePertolonganPertama from "../views/Admin/CreatePertolonganPertama.vue";
+import EditPertolonganPertama from "../views/Admin/EditPertolonganPertama.vue";
 import AdminRumahSakit from "../views/Admin/AdminRumahSakit.vue";
 import CreateRumahSakit from "../views/Admin/CreateRumahSakit.vue";
 import EditRumahSakit from "../views/Admin/EditRumahSakit.vue";
@@ -74,6 +75,10 @@ const adminRoutes = [
       {
         path: "create-ambulans",
         component: CreateAmbulans,
+      },
+      {
+        path: "edit-pertolongan-pertama/:id",
+        component: EditPertolonganPertama,
       },
       {
         path: "edit-ambulans/:id",
