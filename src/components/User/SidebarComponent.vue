@@ -55,7 +55,7 @@
         P3K
       </router-link>
 
-      <router-link
+      <!-- <router-link
         to="/riwayat"
         class="block mt-4 py-3 mx-6 rounded-lg flex items-center hover:bg-blue-500 hover:text-white hover:border-blue-500"
         active-class="bg-blue-500 text-white border-blue-500"
@@ -74,7 +74,7 @@
           />
         </svg>
         Riwayat
-      </router-link>
+      </router-link> -->
     </div>
 
     <div class="border-t border-gray-200 overflow-y-auto py-5">

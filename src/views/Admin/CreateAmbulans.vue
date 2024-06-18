@@ -13,12 +13,12 @@
         </label>
         <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="plat_nomor" type="text" v-model="form.plat_nomor" required>
       </div>
-      <div class="mb-4">
+      <!-- <div class="mb-4">
         <label class="block text-gray-700 text-sm font-bold mb-2" for="tipe">
           Tipe
         </label>
         <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="tipe" type="text" v-model="form.tipe" required>
-      </div>
+      </div> -->
       <div class="mb-6">
         <label class="block text-gray-700 text-sm font-bold mb-2" for="status">
           Status
@@ -66,7 +66,7 @@ export default {
       form: {
         lokasi: '',
         plat_nomor: '',
-        tipe: '',
+        // tipe: '',
         status: '',
         rumah_sakit_id: '', // To store selected rumah sakit id
         petugas_id: ''     // To store selected petugas id
